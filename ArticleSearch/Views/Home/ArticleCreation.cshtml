@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ArticleSearch.Models.AuthorModel>
+
+@{
+    ViewBag.Title = "Добавление статьи";
+}
+
+<h2>Добавление статьи</h2>
+
+<form action="/Home/ArticleCreation" method="post">
+    <table class="table-condensed">
+        <tr>
+            <td>Авторы статьи</td>
+            <td>
+                <select multiple size="5" name="authorsIds">
+                    @foreach (var author in Model)
+                    {
+                        <option value="@author.Id" title="@author.BioPreview">@author.Name</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Заголовок</td>
+            <td>
+                <input type="text" name="title" />
+            </td>
+        </tr>
+        <tr>
+            <td>Аннотация</td>
+            <td>
+                <textarea rows="10" cols="50" name="abstr"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Текст</td>
+            <td>
+                <textarea rows="10" cols="50" name="text"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Ключевые слова (разделяются запятыми)</td>
+            <td>
+                <input type="text" name="keywords" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Добавить" />
+</form>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ArticleSearch.Models.ArticleModel>
+
+@{
+    ViewBag.Title = "Поиск статей";
+}
+
+<h2>Найти статью</h2>
+
+<form action="/Home/ArticleSearch" method="get">
+    <table class="table-condensed">
+        <tr>
+            <td>Авторы (разделяются запятыми)</td>
+            <td><input type="text" name="authors" /></td>
+        </tr>
+        <tr>
+            <td>Ключевые слова (разделяются запятыми)</td>
+            <td><input type="text" name="keywords" /></td>
+        </tr>
+        <tr>
+            <td>Заголовок статьи</td>
+            <td><input type="text" name="title" /></td>
+        </tr>
+        <tr>
+            <td>Аннотация</td>
+            <td><input type="text" name="abstr" /></td>
+        </tr>
+        <tr>
+            <td>Текст</td>
+            <td><input type="text" name="text" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Поиск..." />
+</form>
+
+<br />
+<h2>Результаты поиска</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorsNames)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abstract)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TextPreview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorsNames)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keywords)
+        </td>
+        <td>
+            @Html.ActionLink("Подробнее...", "ArticleDetails", new { id=item.Id }, new { target = "_blank" })
+        </td>
+    </tr>
+}
+</table>

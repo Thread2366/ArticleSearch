@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ArticleSearch.Models.AuthorModel>
+
+@{
+    ViewBag.Title = "Поиск авторов";
+}
+
+<h2>Найти автора</h2>
+
+<form action="/Home/AuthorSearch" method="get">
+    <input type="text" name="searchRequest" />
+    <input type="submit" value="Поиск..." />
+</form>
+
+<br />
+<h2>Результаты поиска</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BioPreview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.ActionLink("Подробнее...", "AuthorDetails", new { id=item.Id }, new { target = "_blank" })
+        </td>
+    </tr>
+}
+
+</table>

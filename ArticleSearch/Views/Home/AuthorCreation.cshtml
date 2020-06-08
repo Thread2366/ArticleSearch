@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ArticleSearch.Models.CountryModel>
+
+@{
+    ViewBag.Title = "Добавление автора";
+}
+
+<h2>Добавление автора</h2>
+
+<form action="/Home/AuthorCreation" method="post">
+    <table class="table-condensed">
+        <tr>
+            <td>Имя</td>
+            <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <td>Биография</td>
+            <td><input type="text" name="bio" /></td>
+        </tr>
+        <tr>
+            <td>Страна</td>
+            <td>
+                <select name="country">
+                    @foreach (var country in Model)
+                    {
+                        <option value="@country.CountryName" >@country.CountryName</option>
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Добавить" />
+</form>

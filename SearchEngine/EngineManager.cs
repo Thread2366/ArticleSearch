@@ -101,6 +101,8 @@ namespace SearchEngine
             return article;
         }
 
+        public List<Author> FindAuthors() => FindAuthors("");
+
         public List<Author> FindAuthors(string searchRequest)
         {
             if (string.IsNullOrEmpty(searchRequest)) return context.Authors.ToList();
@@ -151,6 +153,21 @@ namespace SearchEngine
                     .Where(ar => ar.Text.ToLower().Contains(text.ToLower()));
             }
             return articles.ToList();
+        }
+
+        public Author GetAuthorById(int id)
+        {
+            return context.Authors.Find(id);
+        }
+
+        public Article GetArticleById(int id)
+        {
+            return context.Articles.Find(id);
+        }
+
+        public List<Country> GetCountries()
+        {
+            return context.Countries.ToList();
         }
     }
 }

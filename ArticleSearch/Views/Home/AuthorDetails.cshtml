@@ -1,0 +1,15 @@
+﻿@model ArticleSearch.Models.AuthorModel
+
+@{
+    ViewBag.Title = $"{Model.Name} - автор";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <h4>@Html.DisplayNameFor(model => model.Bio)</h4>
+    <p>@Model.Bio</p>
+    <br />
+    <h4>@Html.DisplayNameFor(model => model.Country) </h4>
+    <p>@Model.Country</p>
+</div>

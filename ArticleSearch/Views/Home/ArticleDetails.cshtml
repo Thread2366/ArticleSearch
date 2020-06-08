@@ -1,0 +1,20 @@
+﻿@model ArticleSearch.Models.ArticleModel
+
+@{
+    ViewBag.Title = $"{Model.Title} - статья";
+}
+
+<h2>@Model.Title</h2>
+
+<div>
+    <p>@Model.AuthorsNames</p>
+    <hr />
+    <p>@Html.DisplayNameFor(model => model.Keywords): @Model.Keywords</p>
+    <hr />
+    <h4>@Html.DisplayNameFor(model => model.Abstract)</h4>
+    <p>@Model.Abstract</p>
+    <br />
+    <h4>@Html.DisplayNameFor(model => model.Text)</h4>
+    <p>@Model.Text</p>
+    <br />
+</div>
